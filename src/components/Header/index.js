@@ -3,6 +3,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Avatar from '@material-ui/core/Avatar';
+import Icon from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -17,13 +19,14 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Link from '@material-ui/core/Link';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../themes/theme';
+import logo from '../../images/BD_logo.jpeg'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(3),
+    marginRight: theme.spacing(1),
   },
   title: {
     display: 'none',
@@ -132,7 +135,12 @@ export default function PrimarySearchAppBar() {
       <ThemeProvider theme={theme.palette.prim}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
+            <Icon>
+            <Avatar alt="Belle" src={logo} />
+            </Icon>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton
               edge="start"
               className={classes.menuButton}
               color="inherit"
@@ -140,18 +148,6 @@ export default function PrimarySearchAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Link href="https://github.com/bduran04" color="inherit">
-                  <GitHubIcon />
-                </Link>
-              </IconButton>
-              <IconButton color="inherit">
-                <Link href="https://www.linkedin.com/in/belle-duran-127760204/" color="inherit">
-                  <LinkedInIcon />
-                </Link>
-              </IconButton>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

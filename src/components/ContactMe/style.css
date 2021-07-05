@@ -1,0 +1,17 @@
+.contact {
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .contact-text {
+    margin-bottom: 0;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .contact-list {
+    list-style: none;
+    text-align: left;
+    text-indent: 2px;
+  }

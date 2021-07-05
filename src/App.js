@@ -2,9 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AboutMe from "./components/AboutMe";
 import Projects from "./pages/Projects";
-import Header from "./components/Header"
-import Container from "./components/Container"
-import Intro from "./components/Intro"
+import Header from "./components/Header";
+import ContactMe from "./components/ContactMe";
+import Container from "./components/Container";
+import Intro from "./components/Intro";
 import { Button } from 'reactstrap';
 import { ThemeProvider } from '@material-ui/core';
 import theme from './themes/theme'
@@ -23,8 +24,12 @@ function App() {
               <Route exact path="/" component={AboutMe} />
             </div>
           </div>
+          <div className="section dark">
+          <div className="section-container">
+              <Route exact path="/" component={ContactMe} />
+            </div>
+            </div>
           {/* <Route exact path="/" />
-          <Route exact path="/about" component={AboutMe} />
           <Route exact path="/projects" component={Projects} /> */}
           {/* <Footer /> */}
         </div>
