@@ -44,7 +44,7 @@ class HeaderComponent extends Component {
       <div className="header-wrapper" style={{ "height": this.state.height }}>
         <div className="header">
           <h3>My name is Belle Duran</h3>
-          <h6>I am a Front-End Developer</h6>
+          <h6>I am a software developer</h6>
         </div>
         <div className="scroll-down-btn">
           <Fab mini={true} onClick={this.onScrollToIntro.bind(this)}>
