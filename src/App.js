@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AboutMe from "./components/AboutMe";
-import Projects from "./pages/Projects";
+import Project from "./Projects";
 import Header from "./components/Header";
 import ContactMe from "./components/ContactMe";
 import Container from "./components/Container";
@@ -17,21 +17,24 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <div>
+        <Switch>
           <Header />
-          <Intro />
-          <div className="section colored">
-          <div className="section-container">
-              <Route exact path="/" component={AboutMe} />
+            <Intro />
+            <div className="section colored">
+              <div className="section-container">
+                <Route exact path="/" component={AboutMe} />
+              </div>
             </div>
-          </div>
-          <div className="section dark">
-          <div className="section-container">
-              <Route exact path="/" component={ContactMe} />
+            <div className="section dark">
+              <div className="section-container">
+                <Route exact path="/" component={ContactMe} />
+              </div>
             </div>
-            </div>
-          {/* <Route exact path="/" />
-          <Route exact path="/projects" component={Projects} /> */}
-          {/* <Footer /> */}
+            </Switch>
+            <Route >
+              <Route theme={theme} exact path="/projects" component={Project} />
+            </Route>
+            {/* <Footer /> */}
         </div>
       </Router>
     </ThemeProvider>
