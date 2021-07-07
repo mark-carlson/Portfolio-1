@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
@@ -26,6 +26,7 @@ function AboutMe(props) {
             </div>
             <p className="introduction-text">
                 Loves cats, gardening, and authentic Mexican cuisine.
+                <br/>
                 My grandma's tamales can throw down with Bobby Flay and Gordon Ramsay.
             </p>
         </Container>
