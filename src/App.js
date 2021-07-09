@@ -29,7 +29,7 @@ function App() {
               </div>
             </div>
           </Route>
-          <div className="section colored">
+          <div className="section normal">
           <div className="section">
           <Route exact path="/projects" component={Projects} />
           </div>

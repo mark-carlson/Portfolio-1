@@ -7,13 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '50%', 
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -41,18 +41,19 @@ export default function ProjectCard(props) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={process.env.PUBLIC_URL + props.image}
+        style={{
+          backgroundImage: props.image ? `url(${props.image})` : "none"
+        }}
         title="Project"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          {props.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <GitHubIcon />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {

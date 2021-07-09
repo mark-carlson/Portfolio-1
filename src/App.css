@@ -56,6 +56,10 @@ p {
   ;
 }
 
+.section.normal {
+  background-color: #b2ebf2
+}
+
 p.headline {
   margin-top: 0;
   text-transform: uppercase;
