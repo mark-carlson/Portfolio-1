@@ -2,16 +2,21 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Icon from '@material-ui/core/IconButton';
+import Projects from "../../Projects";
 import MenuItem from '@material-ui/core/MenuItem';
-import Link from '@material-ui/core/Link';
 import Menu from '@material-ui/core/Menu';
+import Link from '@material-ui/core/Link';
+import { useTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../themes/theme';
 import SimpleMenu from './menu'
 import logo from '../../images/BD_logo.jpeg'
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -52,9 +57,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+const Header = props => {
+  const { history } = props
   const classes = useStyles();
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const preventDefault = (event) => event.preventDefault();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -63,34 +72,36 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(null);
   };
 
+  const handleClick = (pageURL) => {
+    history.push(pageURL);
+    setAnchorEl(null);
+  };
+
+  const handleMenuItemClick = (event, index) => {
+    setSelectedIndex(index);
+    setAnchorEl(null);
+  };
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = 
-  (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-      <MenuItem onClick={handleClose}>Home</MenuItem>
-        <MenuItem 
-        component={Link}
-        to="/projects"
-        onClick={handleClose}
-        >
-          Projects
-          </MenuItem>
-      </MenuItem>
-    </Menu>
-  );
+  const renderMobileMenu =
+    (
+      <Menu
+        anchorEl={mobileMoreAnchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        id={mobileMenuId}
+        keepMounted
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMobileMenuOpen}
+        onClose={handleMobileMenuClose}
+      >
+        <MenuItem onClick={handleClose}>Home</MenuItem>
+        <MenuItem onClick={handleClose}>Projects</MenuItem>
+      </Menu>
+    );
 
   return (
     <div className={classes.grow}>
@@ -100,9 +111,11 @@ export default function PrimarySearchAppBar() {
             <Icon>
               <Avatar alt="Belle" src={logo} />
             </Icon>
-            <IconButton className={classes.toolbarButtons}>
-           <SimpleMenu />
-           </IconButton>
+            <MenuItem 
+            className={classes.toolbarButtons}
+            onClick={() => handleClick('./projects')}>
+              Projects
+              </MenuItem>
           </Toolbar>
         </AppBar>
       </ThemeProvider>
@@ -110,3 +123,5 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+export default Header;
