@@ -5,13 +5,13 @@
   letter-spacing: 2px;
 }
   
-  @media (max-width: 900px) {
-    .column {
-      flex: none;
-      width: 100%;
-      min-width: none;
-      max-width: none;
-      margin: 20px 0px;
-    }
+@media (max-width: 900px) {
+  .column {
+    flex: none;
+    width: 100%;
+    min-width: none;
+    max-width: none;
+    margin: 20px 0px;
   }
+}
   

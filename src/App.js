@@ -13,8 +13,8 @@ import './App.css';
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <Header />
       <Router>
+      <Header />
         <Switch>
           <Route exact path="/">
             <Intro />

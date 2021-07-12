@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Grid from '@material-ui/core/Grid';
 
+import './style.css';
+
 const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
@@ -32,8 +34,8 @@ export default function ProjectCard(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={6}>
-      <Card className={classes.root}>
+    <Grid item xs={12} sm={6}>
+      <Card className={classes.expand}>
         <CardMedia
           className={classes.media}
           style={{
@@ -42,8 +44,11 @@ export default function ProjectCard(props) {
           title="Project"
         />
         <CardContent>
+          <Typography className="project-heading">
+            {props.title}
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.description}
+             {props.description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -14,7 +15,6 @@ import Link from '@material-ui/core/Link';
 import { useTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../themes/theme';
-import SimpleMenu from './menu'
 import logo from '../../images/BD_logo.jpeg'
 import { NavLink } from 'react-router-dom';
 
@@ -57,8 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = props => {
-  const { history } = props
+  export default function ButtonAppBar() {
   const classes = useStyles();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const preventDefault = (event) => event.preventDefault();
@@ -72,10 +71,13 @@ const Header = props => {
     setAnchorEl(null);
   };
 
-  const handleClick = (pageURL) => {
-    history.push(pageURL);
-    setAnchorEl(null);
+  const HomeButton = () => {
+    const history = useHistory();
   };
+  
+  const handleClick = () => {
+    window.history.push("/home")
+    };
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -108,20 +110,20 @@ const Header = props => {
       <ThemeProvider theme={theme.palette.primary}>
         <AppBar position="static">
           <Toolbar>
-            <Icon>
+              <NavLink to="/">
               <Avatar alt="Belle" src={logo} />
-            </Icon>
-            <MenuItem 
-            className={classes.toolbarButtons}
-            onClick={() => handleClick('./projects')}>
-              Projects
-              </MenuItem>
+              </NavLink>
+            <NavLink 
+              to="/projects"
+              className={classes.toolbarButtons}>
+              <Button>
+                Projects
+              </Button>
+            </NavLink>
           </Toolbar>
         </AppBar>
       </ThemeProvider>
       {renderMobileMenu}
     </div>
   );
-}
-
-export default Header;
+};
