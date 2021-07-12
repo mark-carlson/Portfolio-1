@@ -19,7 +19,8 @@
     "scroll-to": "0.0.2",
     "web-vitals": "1.0.1"
   },
-  "homepage": "https://bduran04.github.io/portfolio",
+
+  "homepage": "https://bduran04.github.io/Portfolio/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
